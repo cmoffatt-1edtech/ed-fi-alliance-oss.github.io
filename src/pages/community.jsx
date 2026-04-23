@@ -7,6 +7,7 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 function Main() {
   return (
@@ -34,7 +35,7 @@ function Main() {
         <div className="col col--offset-1 col--6">
           <Link to="https://community.ed-fi.org">
             <img
-              src="/img/community-hub.jpg"
+              src={useBaseUrl('/img/community-hub.jpg')}
               alt="[Screenshot of the Community Hub]"
               className="shadow--md"
             />
@@ -45,7 +46,7 @@ function Main() {
         <div className="col col--6">
           <Link to="https://ed-fi-alliance.slack.com/">
             <img
-              src="/img/slack.jpg"
+              src={useBaseUrl('/img/slack.jpg')}
               alt="[Screenshot of Ed-Fi Slack sign-in page]"
               className="shadow--md"
             />
@@ -104,7 +105,7 @@ function Main() {
           <div className="col col--offset-1 col--6">
             <Link to="https://github.com/Ed-Fi-Alliance-OSS">
               <img
-                src="/img/github.jpg"
+                src={useBaseUrl('/img/github.jpg')}
                 alt="[Screenshot of Ed-Fi Alliance on GitHub]"
                 className="shadow--md"
               />

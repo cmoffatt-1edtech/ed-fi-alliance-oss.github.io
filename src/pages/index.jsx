@@ -5,6 +5,7 @@
 
 import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
@@ -13,8 +14,16 @@ import styles from './index.module.css';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
+  const logoLight = useBaseUrl('/img/ed-fi-logo-light.svg');
+  const logoDark = useBaseUrl('/img/ed-fi-logo-dark.svg');
   return (
-    <header className={clsx('hero', styles.heroBanner)}>
+    <header
+      className={clsx('hero', styles.heroBanner)}
+      style={{
+        '--hero-logo-light': `url(${logoLight})`,
+        '--hero-logo-dark': `url(${logoDark})`,
+      }}
+    >
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}

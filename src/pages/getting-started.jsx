@@ -7,6 +7,7 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 /* Refactor opportunity: convert the two Playbooks into a list and use a single
 component to define structure */
@@ -14,7 +15,7 @@ component to define structure */
 function SeaPlaybook() {
   return (
     <div className="margin-bottom--lg">
-      <img src="/img/sea-playbook.jpg" alt="[SEA playbook cover image]" />
+      <img src={useBaseUrl('/img/sea-playbook.jpg')} alt="[SEA playbook cover image]" />
       <Heading as="h3">State Education Agency (SEA) Playbook</Heading>
       <Link
         to="/getting-started/sea-playbook"
@@ -30,7 +31,7 @@ function TechPlaybook() {
   return (
     <div className="margin-bottom--lg">
       <img
-        src="/img/tech-playbook.jpg"
+        src={useBaseUrl('/img/tech-playbook.jpg')}
         alt="[Tech provider playbook cover image]"
       />
       <Heading as="h3">Technology Provider Playbook</Heading>
@@ -47,7 +48,7 @@ function TechPlaybook() {
 function EsaPlaybook() {
   return (
     <div className="margin-bottom--lg">
-      <img src="/img/esa-playbook.jpg" alt="[ESA playbook cover image]" />
+      <img src={useBaseUrl('/img/esa-playbook.jpg')} alt="[ESA playbook cover image]" />
       <Heading as="h3">Educational Service Agency (ESA) Playbook</Heading>
       <Link
         to="/getting-started/esa-playbook"

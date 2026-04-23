@@ -127,7 +127,7 @@
 }
 
 .hero__title {
-  background-image: url('/img/ed-fi-logo-light.svg');
+  background-image: var(--hero-logo-light, url('/img/ed-fi-logo-light.svg'));
   background-size: cover;
   width: 366px;
   height: 180px;
@@ -136,7 +136,7 @@
 }
 
 [data-theme='dark'] .hero__title {
-  background-image: url('/img/ed-fi-logo-dark.svg');
+  background-image: var(--hero-logo-dark, url('/img/ed-fi-logo-dark.svg'));
 }
 
 .DocSearch-Modal {

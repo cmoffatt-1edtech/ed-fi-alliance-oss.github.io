@@ -4,6 +4,7 @@ import {useColorMode} from '@docusaurus/theme-common';
 import SearchBar from '@theme/SearchBar';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {useLocation} from '@docusaurus/router';
+import useBaseUrl, {useBaseUrlUtils} from '@docusaurus/useBaseUrl';
 import styles from './primaryStyles.module.css';
 
 // NOTE: Desktop-focused primary nav. Original Docusaurus Navbar kept for mobile only.
@@ -15,11 +16,17 @@ export default function PrimaryNav() {
   const [isMac, setIsMac] = useState(false);
   useEffect(() => { setIsMac(/Mac|iPod|iPhone|iPad/.test(window.navigator.platform)); }, []);
   const location = useLocation();
+  const {withBaseUrl} = useBaseUrlUtils();
+  const rootUrl = useBaseUrl('/');
+  const logoDark = useBaseUrl('/img/ed-fi-logo-dark.svg');
+  const logoLight = useBaseUrl('/img/ed-fi-logo-light.svg');
+  const lightModeIcon = useBaseUrl('/img/light-mode.svg');
 
   const isActive = (item) => {
     if (!item.to) return false;
-    if (item.to === '/') return location.pathname === '/';
-    return location.pathname === item.to || location.pathname.startsWith(item.to + '/');
+    const target = withBaseUrl(item.to);
+    if (item.to === '/') return location.pathname === target;
+    return location.pathname === target || location.pathname.startsWith(target + '/');
   };
 
   const toggle = () => setColorMode(colorMode === 'dark' ? 'light' : 'dark');
@@ -29,9 +36,9 @@ export default function PrimaryNav() {
       <nav className={styles.primaryNav} aria-label="Main">
         <div className={styles.inner}>
           <div className={styles.topSideBar}>
-            <a href="/" className={styles.brand} aria-label="Ed-Fi Docs home">
+            <a href={rootUrl} className={styles.brand} aria-label="Ed-Fi Docs home">
               <img
-                src={colorMode === 'dark' ? '/img/ed-fi-logo-dark.svg' : '/img/ed-fi-logo-light.svg'}
+                src={colorMode === 'dark' ? logoDark : logoLight}
                 alt="Ed-Fi Alliance"
                 className={styles.logoImg}
                 width={160}
@@ -40,7 +47,7 @@ export default function PrimaryNav() {
               />
             </a>
             <span className={styles.dividerThin} aria-hidden="true" />
-            <a href="/" className={clsx(styles.docsHome,'docs-home-link')} aria-current={location.pathname === '/' ? 'page' : undefined}>Docs</a>
+            <a href={rootUrl} className={clsx(styles.docsHome,'docs-home-link')} aria-current={location.pathname === rootUrl ? 'page' : undefined}>Docs</a>
           </div>
           <div className={styles.searchRegion}>
             <div className={styles.searchShell} role="search">
@@ -61,7 +68,7 @@ export default function PrimaryNav() {
               return (
                 <li key={item.label} className={styles.navItem}>
                   <a
-                    href={item.to || item.href}
+                    href={item.to ? withBaseUrl(item.to) : item.href}
                     className={clsx(styles.navLink, active && styles.navLinkActive)}
                     aria-current={active ? 'page' : undefined}
                   >
@@ -72,7 +79,7 @@ export default function PrimaryNav() {
             })}
             <button type="button" onClick={toggle} className={styles.modeToggle} aria-label="Toggle dark mode" aria-pressed={colorMode === 'dark'}>
             <div className={styles.modeToggleInner}>
-              <img src="/img/light-mode.svg" alt="Light mode" width="20" height="20" />
+              <img src={lightModeIcon} alt="Light mode" width="20" height="20" />
             </div>
           </button>
           </ul>
