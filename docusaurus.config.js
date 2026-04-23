@@ -11,10 +11,12 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs.ed-fi.org',
+  // TEMP: overridden for fork preview deploy (cmoffatt-1edtech GitHub Pages)
+  url: 'https://cmoffatt-1edtech.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  // TEMP: overridden for fork preview deploy (cmoffatt-1edtech GitHub Pages)
+  baseUrl: '/ed-fi-alliance-oss.github.io/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
