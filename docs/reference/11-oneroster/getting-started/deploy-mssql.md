@@ -28,7 +28,7 @@ Two distinct steps are involved:
 - The ODS API's `ApiSettings:OdsConnectionStringEncryptionKey` value.
   The OneRoster service uses the same key to decrypt the ODS
   connection strings it reads from `EdFi_Admin.OdsInstances`.
-- Node.js 18 LTS or later
+- Node.js 22 LTS or later
 
 ## Step 1. Deploy the SQL artifacts and seed data
 
@@ -55,7 +55,7 @@ Copy `.env.example` to `.env` at the repository root and set at least:
   at the ODS API's `EdFi_Admin` database. Example:
 
   ```env
-  CONNECTION_CONFIG={"adminConnection":"server=localhost;database=EdFi_Admin;user id=sa;password=P@ssw0rd;encrypt=false;TrustServerCertificate=true"}
+  CONNECTION_CONFIG={"adminConnection":"server=localhost;database=EdFi_Admin;user id=<your-username>;password=<your-password>;encrypt=false;TrustServerCertificate=true"}
   ```
 
 - `ODS_CONNECTION_STRING_ENCRYPTION_KEY` — the base64 AES key that

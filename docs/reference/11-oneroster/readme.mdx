@@ -46,8 +46,7 @@ the Ed-Fi API see the same source of truth.
 
 The direction of the work, including which use cases the service should expand
 to cover next, is set by a joint Ed-Fi Alliance and 1EdTech Steering Committee
-in consultation with the pilot community. See [What's next](./whats-next.md) for
-the in-flight items and
+in consultation with the pilot community. See
 [1edtech.org/about/partners/ed-fi](https://www.1edtech.org/about/partners/ed-fi)
 for the current public summary.
 
@@ -105,20 +104,6 @@ the raw OpenAPI 3.0 specification at `/swagger.json`. The live docs let a
 consumer exercise every endpoint, inspect the full schema, and authenticate with
 an OAuth 2.0 bearer token directly from the page.
 
-- Staging:
-  [oneroster.touchdownllc.com/docs](https://oneroster.touchdownllc.com/docs/).
-- Production: to be hosted under [api.ed-fi.org](https://api.ed-fi.org/) at
-  general-availability release. The production URL will be added here when it is
-  published.
-
-:::note
-
-The staging URL is a temporary preview host and will be removed once the
-production Swagger UI is published under `api.ed-fi.org`. Do not rely on it for
-anything beyond evaluation.
-
-:::
-
 This mirrors the live-docs experience the Ed-Fi ODS / API has long offered (for
 example, the ODS / API 7.1 Swagger UI at
 [api.ed-fi.org/v7.1/docs/swagger](https://api.ed-fi.org/v7.1/docs/swagger)), so
@@ -134,25 +119,26 @@ result on your own deployment.
 
 ## Integration with the Ed-Fi ODS / API
 
-The Ed-Fi ODS / API (version 7.3 and later) exposes feature-management settings
-and claim-set entries that govern how OneRoster clients are issued tokens and
-which scopes they may request. For the ODS / API-side configuration, see the
-[Features reference](/reference/ods-api/platform-dev-guide/features/) in the ODS
-/ API v7.3 platform developer guide. The OneRoster entry on that page documents
-the `FeatureManagement:OneRoster` setting and the related claim-set wiring.
+The Ed-Fi ODS / API (version 7.3.2 and later) exposes feature-management
+settings and claim-set entries that govern how OneRoster clients are issued
+tokens and which scopes they may request. For the ODS / API-side configuration,
+see the [Features reference](/reference/ods-api/platform-dev-guide/features/) in
+the ODS / API v7.3 platform developer guide. The OneRoster entry on that page
+documents the `FeatureManagement:OneRoster` setting and the related claim-set
+wiring.
 
 ## Supported Data Standard versions
 
 The SQL artifacts for each Data Standard version live in the service repository
 under `standard/{dataStandardVersion}/artifacts/{pgsql|mssql}/core/`.
 
-| Data Standard | Supported | Notes                                                |
-| ------------- | --------- | ---------------------------------------------------- |
-| 6             | No        | Not yet supported. Planned for a future release.     |
-| 5.2           | Yes       | Default artifact set. Compatible with ODS / API 7.3. |
-| 5.1           | Yes       | Uses the 5.2 SQL artifacts.                          |
-| 5.0           | Yes       | Uses the 5.2 SQL artifacts.                          |
-| 4.0           | Yes       | Separate artifact set under `standard/4.0.0/`.       |
+| Data Standard | Supported | Notes                                               |
+| ------------- | --------- | --------------------------------------------------- |
+| 6             | No        | Not yet supported. Planned for a future release.    |
+| 5.2           | Yes       | Default artifact set, located under standard/5.2.0/ |
+| 5.1           | Yes       | Uses the 5.2 SQL artifacts.                         |
+| 5.0           | Yes       | Uses the 5.2 SQL artifacts.                         |
+| 4.0           | Yes       | Separate artifact set under `standard/4.0.0/`.      |
 
 The OneRoster service follows a release cadence independent of the Ed-Fi ODS /
 API. This documentation is not versioned. If the service accumulates breaking

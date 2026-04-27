@@ -150,11 +150,6 @@ field so that records can be traced back to the ODS. Beyond that,
 OneRoster v1.2 metadata extensions are supported as the
 specification allows.
 
-Beyond what the service emits today, shared extension guidance is a
-live work item. See
-[What's next](./whats-next.md#extension-guidance-and-governance) for
-the direction.
-
 ## Performance, scale, and operations
 
 ### Q: Is the service suitable for statewide use?
@@ -194,7 +189,7 @@ for the claims the authorization server must populate.
 
 Yes. The service is released independently of the Ed-Fi ODS / API
 and supports Data Standard 4.0 and 5.0 through 5.2 from a single
-code base. Pair it with Ed-Fi ODS / API 7.3 or later, which ships
+code base. Pair it with Ed-Fi ODS / API 7.3.2 or later, which ships
 the `FeatureManagement:OneRoster` setting and the claim-set entries
 that authorize OneRoster clients. See [OAuth and
 JWT](./configuration/oauth-and-jwt.md) for the wiring details.

@@ -18,7 +18,7 @@ Ed-Fi ODS that runs on PostgreSQL. Two distinct steps are involved:
 - The ODS API's `ApiSettings:OdsConnectionStringEncryptionKey` value.
   The OneRoster service uses the same key to decrypt the ODS
   connection strings it reads from `EdFi_Admin.OdsInstances`.
-- Node.js 18 LTS or later
+- Node.js 22 LTS or later
 
 ## Step 1. Deploy the SQL artifacts
 
@@ -41,7 +41,7 @@ Copy `.env.example` to `.env` at the repository root and set at least:
   at the ODS API's `EdFi_Admin` database. Example:
 
   ```env
-  CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=postgres;password=P@ssw0rd"}
+  CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=<your-username>;password=<your-password>"}
   ```
 
 - `ODS_CONNECTION_STRING_ENCRYPTION_KEY` — the base64 AES key that

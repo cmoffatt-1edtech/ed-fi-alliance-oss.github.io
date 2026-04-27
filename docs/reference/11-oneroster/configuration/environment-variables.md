@@ -19,7 +19,7 @@ single-tenant `EdFi_Admin`:
 
 ```env
 DB_TYPE=postgres
-CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=postgres;password=P@ssw0rd"}
+CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=<your-username>;password=<your-password>"}
 ODS_CONNECTION_STRING_ENCRYPTION_KEY=<base64 key matching the ODS API's ApiSettings:OdsConnectionStringEncryptionKey>
 
 OAUTH2_ISSUERBASEURL=https://your-issuer/
@@ -59,18 +59,18 @@ time using `ODS_CONNECTION_STRING_ENCRYPTION_KEY`.
 | Variable | Default | Notes |
 | --- | --- | --- |
 | `CONNECTION_CONFIG` | _(none)_ | Required in single-tenant mode. JSON with an `adminConnection` key whose value is an `EdFi_Admin` connection string for the configured `DB_TYPE`. Ignored when `MULTITENANCY_ENABLED=true`. |
-| `ODS_CONNECTION_STRING_ENCRYPTION_KEY` | _(none)_ | Required. Base64-encoded AES key used to decrypt the ODS connection strings stored in `EdFi_Admin.OdsInstances`. **Must match** the ODS API's `ApiSettings:OdsConnectionStringEncryptionKey`. Generate with `openssl rand -base64 32`. Without it, the service cannot connect to any ODS. |
+| `ODS_CONNECTION_STRING_ENCRYPTION_KEY` | _(none)_ | Required. Base64-encoded AES key used to decrypt the ODS connection strings stored in `EdFi_Admin.OdsInstances`. **Must match** the ODS API's `ApiSettings:OdsConnectionStringEncryptionKey`. Without this key, the service cannot connect to any ODS. |
 
 PostgreSQL example:
 
 ```env
-CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=postgres;password=P@ssw0rd"}
+CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=<your-username>;password=<your-password>"}
 ```
 
 Microsoft SQL Server example:
 
 ```env
-CONNECTION_CONFIG={"adminConnection":"server=localhost;database=EdFi_Admin;user id=sa;password=P@ssw0rd;encrypt=false;TrustServerCertificate=true"}
+CONNECTION_CONFIG={"adminConnection":"server=localhost;database=EdFi_Admin;user id=<your-username>;password=<your-password>;encrypt=false;TrustServerCertificate=true"}
 ```
 
 ### Multi-tenant mode
@@ -84,7 +84,7 @@ PostgreSQL example:
 
 ```env
 MULTITENANCY_ENABLED=true
-TENANTS_CONNECTION_CONFIG={"Tenant1":{"adminConnection":"host=localhost;port=5432;database=EdFi_Admin_Tenant1;username=postgres;password=pass1"},"Tenant2":{"adminConnection":"host=localhost;port=5432;database=EdFi_Admin_Tenant2;username=postgres;password=pass2"}}
+TENANTS_CONNECTION_CONFIG={"Tenant1":{"adminConnection":"host=localhost;port=5432;database=EdFi_Admin_Tenant1;username=<your-username>;password=<your-password>"},"Tenant2":{"adminConnection":"host=localhost;port=5432;database=EdFi_Admin_Tenant2;username=<your-username>;password=<your-password>"}}
 ```
 
 When multi-tenancy is enabled, every OneRoster route is prefixed with
@@ -159,7 +159,7 @@ the behavior details.
 | --- | --- | --- |
 | `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated allowed origins. Leave empty to allow all (not recommended in production). |
 | `RATE_LIMIT_WINDOW_MS` | `60000` | Rate-limit window in milliseconds (`express-rate-limit`). |
-| `RATE_LIMIT_MAX_REQUESTS` | `60` | Maximum requests per window per IP. The bundled `.env.example` sets this to `100`. The service code uses `60` as the fallback when the variable is unset. |
+| `RATE_LIMIT_MAX_REQUESTS` | `100` | Maximum requests per window per IP. |
 | `TRUST_PROXY` | `false` | When `true`, the service trusts `X-Forwarded-*` headers. Required when running behind IIS, NGINX, or ARR. |
 
 ## Deployment-script variables
