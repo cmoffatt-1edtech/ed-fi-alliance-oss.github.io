@@ -18,6 +18,11 @@ const config = {
   // TEMP: overridden for fork preview deploy (cmoffatt-1edtech GitHub Pages)
   baseUrl: '/ed-fi-alliance-oss.github.io/',
 
+  // TEMP: relaxed for fork preview deploy. Some absolute /reference/ods-api/...
+  // links target pages that live on the upstream ODSAPI_7.3.2 branch and have
+  // not yet been merged into main. The upstream PR build remains strict.
+  onBrokenLinks: 'warn',
+
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'ed-fi-alliance-oss', // Usually your GitHub org/user name.
